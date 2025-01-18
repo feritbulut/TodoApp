@@ -1,0 +1,36 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyTodoApp.Views.TodoListPage"
+             Title="Todo App"
+             Padding="0"
+             BackgroundColor="#EBEAD6">
+
+    <Grid RowDefinitions="50, *" Padding="0" Margin="0,0,0,0">
+        
+        <Grid BackgroundColor="#BED9E3" VerticalOptions="Start" Padding="10" Row="0" ColumnDefinitions="*, Auto" HeightRequest="60">
+            <Label Text="Todo List" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+            <ImageButton Margin="0,0,0,0" Source="plus.png" HorizontalOptions="EndAndExpand" WidthRequest="50" HeightRequest="50" Clicked="OnItemAdded" />
+        </Grid>
+
+       
+        
+            <ListView x:Name="listView" Margin="0,30,0,0" Grid.Row="1" ItemSelected="OnListViewItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="20,0,0,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" FontAttributes="Bold" HorizontalOptions="StartAndExpand" Text="{Binding Name}" />
+                                <Grid HorizontalOptions="End" VerticalOptions="Center">
+                                <ImageButton x:Name="checkimage" WidthRequest="30" Source="check.png" Clicked="ImageButton_Clicked" IsVisible="{Binding Done}" Margin="0,0,16,0" />
+                                    <ImageButton Clicked="ImageButton_Clicked" HeightRequest="35" WidthRequest="40" Source="square.png" Margin="0,0,15,0"/>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        
+    </Grid>
+    
+</ContentPage>
